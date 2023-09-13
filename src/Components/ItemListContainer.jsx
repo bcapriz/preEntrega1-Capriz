@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
-import productsJson from "../products.json";
-import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import productsJson from '../../public/products.json'
+import ItemList from "./ItemList";
+
 
 const mockApi = (categoryName) => {
     return new Promise((resolve, reject) => {

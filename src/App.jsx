@@ -11,15 +11,13 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Routes>
-        <Route exact path='/' element={<ItemListContainer greeting=" ¡Bienvenido a mi futura landing page! " />} />;
-        <Route exact path='/home' element={<p>Home</p>} />
+        <Route exact path='/' element={<ItemListContainer />} />
+        <Route exact path='/home' element={<ItemListContainer />} />
         <Route exact path='/category/:categoryName' element={<ItemListContainer />} />
         <Route exact path='/item/:itemId' element={<ItemListContainer />} />
-        <Route exact path='/item/:id' element={<ItemDetailContainer />} />
+        <Route exact path='/item/:itemId' element={<ItemDetailContainer/>}/>
       </Routes>
     </BrowserRouter>
   );
 }
 export default App;
-
-
