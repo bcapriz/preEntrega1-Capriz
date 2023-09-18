@@ -14,8 +14,8 @@ function ItemCount() {
   };
 
   return (
-    <div>
-      <button onClick={decrementCount}>-</button>
+    <div className='button-count'>
+      <button  onClick={decrementCount}>-</button>
       <span>{count}</span>
       <button onClick={incrementCount}>+</button>
     </div>
