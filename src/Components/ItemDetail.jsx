@@ -35,7 +35,7 @@ const ItemDetail = ({ product }) => {
       }
       {product ? (
         cartQuantity > 0 ? (
-          <NavLink to='/cart'><button>Finalizar compra</button></NavLink>
+          <NavLink to='/cart'><button className='custom-btn'>Finalizar compra</button></NavLink>
         ) : (
           <ItemCount stock={product.stock} onAdd={useOnAdd} />
         )

@@ -21,7 +21,7 @@ const Checkout = () => {
             },
             products: cart,
             date: new Date(),
-            total: parseFloat({totalPrice})
+            total: parseFloat({ totalPrice })
         };
 
         const ordersRef = collection(db, "orders");
@@ -30,16 +30,16 @@ const Checkout = () => {
             .catch((error) => {
                 console.error("Error al agregar el documento a Firestore:", error);
             });
-    
+
         deleteCart();
     };
 
     if (orderId) {
         return (
-            <div>
+            <div className="post-buy">
                 <h1>¡Gracias por tu compra!</h1>
                 <h2>Tu id de pedido es ${orderId}</h2>
-                <Link to="/"><button>Ir al Catalogo</button></Link>
+                <button><Link to="/">Ir al Catalogo</Link></button>
             </div>
         )
     }
@@ -48,14 +48,17 @@ const Checkout = () => {
         <div className="container-checkout">
             <h2>Ingresa tus datos para poder finalizar la compra.</h2>
             <form className="form-checkout">
-                <label>Name</label>
-                <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
-                <label>Email</label>
-                <input type="text" value={email} onChange={(event) => setEmail(event.target.value)} />
-                <label>Telefono</label>
-                <input type="text" value={phone} onChange={(event) => setPhone(event.target.value)} />
+                <label>NOMBRE:</label>
+                <input type="text" className="input-checkout" value={name} onChange={(event) => setName(event.target.value)} placeholder="Ingresa tu nombre completo" />
+                <p className="form-separator"></p>
+                <label>EMAIL:</label>
+                <input type="text" className="input-checkout" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Ingresa tu email" />
+                <p className="form-separator"></p>
+                <label>TELEFONO:</label>
+                <input type="text" className="input-checkout" value={phone} onChange={(event) => setPhone(event.target.value)} placeholder="Ingresa tu numero de telefono" />
+               <button className="btn-submit"onClick={createOrder}><Link to='/checkout'>Enviar</Link></button>
             </form>
-            <Link to='/checkout'><button onClick={createOrder}>Finalizar compra</button></Link>
+
         </div>
     )
 }

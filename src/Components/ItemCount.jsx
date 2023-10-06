@@ -17,9 +17,9 @@ function ItemCount({ stock, onAdd }) {
   return (
     <div className='container-count'>
       <div className='button-count'>
-        <button onClick={decrementCount}>-</button>
+        <button className="button-decrement" onClick={decrementCount}>-</button>
         <span>{count}</span>
-        <button onClick={incrementCount}>+</button>
+        <button className="button-increment" onClick={incrementCount}>+</button>
       </div>
       <button className="custom-btn buttom-view-more" onClick={() => onAdd (count)}>Agregar al carrito</button>
     </div>

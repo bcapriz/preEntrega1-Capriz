@@ -19,7 +19,7 @@ const Cart = () => {
                     <p>Precio por unidad: ${product.price}</p>
                     <p>Precio Total: ${product.price * product.quantity}</p>
                     <p>Cantidad: {product.quantity}</p>  
-                    <button onClick={() => removeProduct(product.id)}>Eliminar Producto</button>
+                    <button className="btn-delete" onClick={() => removeProduct(product.id)}>Eliminar Producto</button>
                     <p className="separator-cart"></p>
                 </div>
             ))}
@@ -27,9 +27,9 @@ const Cart = () => {
             {cart.length > 0 ? (
                 <div className="cart-buttons">
                     <h2>Precio Total: ${totalPrice()}</h2>
-                    <button onClick={useDelete}>Vaciar</button>
+                    <button className="btn-delete" onClick={useDelete}>Vaciar</button>
                     <br />
-                    <Link to='/checkout'><button>Finalizar compra</button></Link>
+                    <Link to='/checkout'><button className="btn-buy">Finalizar compra</button></Link>
                 </div>
             ) : (
                 <h2>El carrito se encuentra vacío. </h2>
