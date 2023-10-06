@@ -1,4 +1,3 @@
-
 import { NavLink } from "react-router-dom"
 
 export default function Item({ product }) {
@@ -6,14 +5,14 @@ export default function Item({ product }) {
     return (
         <>
             <div className="item">
-                <NavLink key={product.id} to={`/item/${product.id}`} >
-                    <img src={product.image} width={125} alt="product-image" /> 
-                    <hr className="separator-line-details"/>
+                <img className="product-image" src={product.image}  alt="product-image" />
+                <div className="item-description">
+                    <hr className="separator-line-details" />
                     <h2 className="title-item-list">{product.title}</h2>
                     <span>${product.price}</span>
-                </NavLink>
+                    <button className="custom-btn button-view-more"><NavLink key={product.id} to={`/item/${product.id}`}>Ver mas</NavLink></button>
+                </div>
             </div>
-
         </>
     )
 }

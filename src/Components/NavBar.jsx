@@ -1,6 +1,7 @@
 import CartWidget from "./CartWidget";
 import logo from './../assets/logo.png';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
 
 export const NavBar = () => {
     return (
@@ -9,7 +10,7 @@ export const NavBar = () => {
                 <Link to="/">
                     <img src={logo} alt="logo fit one" className="logo" />
                 </Link>
-
+            
                 <div>
                     <ul className="nav-list">
                         <li className="nav-item"><Link className="nav-link" to="/home">Home</Link></li>
@@ -21,10 +22,11 @@ export const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-right">
-                    <CartWidget />
+                    <NavLink to='/cart'><CartWidget/></NavLink>
                 </div>
             </div>
 
         </section >
     )
 }
+

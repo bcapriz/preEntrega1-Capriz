@@ -1,34 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import ItemDetail from './ItemDetail'
-
-const mockAPI = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() =>
-            resolve(fetch('../../public/products.json'))
-            , 1000);
-    });
-}
+import ItemDetail from './ItemDetail';
+import Loading from './Loading';
+import { doc, getDoc, getFirestore } from 'firebase/firestore';
 
 export const ItemDetailContainer = () => {
-    const { itemId } = useParams();
-    const [data, setData] = useState([]);
+   const { itemId } = useParams();
+  const [data, setData] = useState(null); 
+  const [isLoading, setIsLoading] = useState(true); 
 
-    useEffect(() => {
-        mockAPI()
-            .then(res => res.json())
-            .then((data) => setData(data));
-    }, []);
+  useEffect(() => {
+    const db = getFirestore();
+    const q = doc(db, "products", itemId);
+    getDoc(q).then((snapshot) => {
+      setData({ id: snapshot.id, ...snapshot.data() });
+      setIsLoading(false);
+    })
+  }, [])
 
-    const getItem = data.find(item => item.id === parseInt(itemId));
+  if (isLoading) {
+    return <Loading/>; 
+  }
 
-    if (!getItem) {
-        return <div class="loading"></div>
-    }
-
-    return (
-        <div className='detail-container'>
-            <ItemDetail product={getItem} />
-        </div>
-    );
-}
+  return (
+    <div className='detail-container'>
+      <ItemDetail product={data} />
+    </div>
+  );
+};
